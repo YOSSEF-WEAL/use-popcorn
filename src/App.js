@@ -1,4 +1,5 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import StaticRange from "./StarRating";
 
 const tempMovieData = [
   {
@@ -52,7 +53,8 @@ const average = (arr) =>
 
 const KEY = "2ef73cfc";
 
-export default function App() {
+export default function App()
+{
   const [query, setQuery] = useState("");
 
   const [movies, setMovies] = useState([]);
@@ -67,18 +69,23 @@ export default function App() {
   // useEffect(() => console.log("D"), [query]);
   // console.log("During render");
 
-  function handleSelectMovie(id) {
+  function handleSelectMovie(id)
+  {
     setSelectedId((selectedId) => (id === selectedId ? null : id));
   }
 
-  function handleCloseMovie() {
+  function handleCloseMovie()
+  {
     setSelectedId(null);
   }
 
   useEffect(
-    function () {
-      async function fetchMoveis() {
-        try {
+    function ()
+    {
+      async function fetchMoveis()
+      {
+        try
+        {
           setIsLoging(true);
           setError("");
 
@@ -96,15 +103,18 @@ export default function App() {
           setMovies(data.Search);
 
           // console.log(data.Search);
-          console.log(data.Search);
-        } catch (error) {
+          // console.log(data.Search);
+        } catch (error)
+        {
           console.error(error.message);
           setError(error.message);
-        } finally {
+        } finally
+        {
           setIsLoging(false);
         }
       }
-      if (query.length < 3) {
+      if (query.length < 3)
+      {
         setMovies([]);
         setError("");
         return;
@@ -150,11 +160,13 @@ export default function App() {
   );
 }
 
-function Loader() {
+function Loader()
+{
   return <p className="loader">Loading...</p>;
 }
 
-function ErrorMessage({ message }) {
+function ErrorMessage({ message })
+{
   return (
     <p className="error">
       <span>⛔</span>
@@ -163,7 +175,8 @@ function ErrorMessage({ message }) {
   );
 }
 
-function NavBar({ children }) {
+function NavBar({ children })
+{
   return (
     <nav className="nav-bar">
       <Logo />
@@ -172,7 +185,8 @@ function NavBar({ children }) {
   );
 }
 
-function Logo() {
+function Logo()
+{
   return (
     <div className="logo">
       <span role="img">🍿</span>
@@ -181,7 +195,8 @@ function Logo() {
   );
 }
 
-function Search({ query, setQuery }) {
+function Search({ query, setQuery })
+{
   return (
     <input
       className="search"
@@ -193,7 +208,8 @@ function Search({ query, setQuery }) {
   );
 }
 
-function NumResults({ movies }) {
+function NumResults({ movies })
+{
   return (
     <p className="num-results">
       Found <strong>{movies && movies.length}</strong> results
@@ -201,11 +217,13 @@ function NumResults({ movies }) {
   );
 }
 
-function Main({ children }) {
+function Main({ children })
+{
   return <main className="main">{children}</main>;
 }
 
-function Box({ children }) {
+function Box({ children })
+{
   const [isOpen, setIsOpen] = useState(true);
 
   return (
@@ -240,7 +258,8 @@ function Box({ children }) {
 //   </div>
 // }
 
-function MovieList({ movies, onSelectMovie }) {
+function MovieList({ movies, onSelectMovie })
+{
   return (
     <ul className="list list-movies">
       {movies?.map((movie) => (
@@ -250,7 +269,8 @@ function MovieList({ movies, onSelectMovie }) {
   );
 }
 
-function Movie({ movie, onSelectMovie }) {
+function Movie({ movie, onSelectMovie })
+{
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
@@ -265,18 +285,76 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetals({ selectedId, onCloseMovie }) {
+function MovieDetals({ selectedId, onCloseMovie })
+{
+  const [movie, setMovie] = useState({});
+  const [isLoging, setIsLoging] = useState(false);
+  const { Title: title,
+    Year: year,
+    Poster: poster,
+    Runtime: runtime,
+    imdbRating,
+    Plot: plot,
+    Released: released,
+    Actors: actors,
+    Director: director,
+    Genre: genre } = movie;
+
+  console.log(title, '-', year);
+
+  useEffect(function ()
+  {
+    async function getMovieDetails()
+    {
+      setIsLoging(true);
+
+      const res = await fetch(
+        `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+      );
+      const data = await res.json();
+      setMovie(data);
+      setIsLoging(false);
+    }
+    getMovieDetails();
+  }, [selectedId])
+
   return (
     <div className="details">
-      <button className="btn-back" onClick={onCloseMovie}>
-        &larr;
-      </button>
-      {selectedId}
+      {isLoging ? <Loader /> : <>
+
+
+        <header>
+          <button className="btn-back" onClick={onCloseMovie}>
+            &larr;
+          </button>
+
+          {!poster ? "🍿" : < img src={poster} alt={`poster of ${movie} movie`} />}
+
+          <div className="details-overview">
+            <h2>{title}</h2>
+            <p>{released} &bull; {runtime}</p>
+            <p>{genre}</p>
+            <p><span>🌟</span>{imdbRating} IMDB Reting</p>
+          </div>
+        </header>
+
+        <section>
+          <div className="rating">
+            <StaticRange maxRating={10} size={24} />
+          </div>
+
+          <p><em>{plot}</em></p>
+          <p>Starring {actors}</p>
+          <p>Directed By {director}</p>
+        </section>
+      </>
+      }
     </div>
   );
 }
 
-function WatchedSummary({ watched }) {
+function WatchedSummary({ watched })
+{
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
@@ -306,7 +384,8 @@ function WatchedSummary({ watched }) {
   );
 }
 
-function WatchedMovieList({ watched }) {
+function WatchedMovieList({ watched })
+{
   return (
     <ul className="list">
       {watched.map((movie) => (
@@ -316,7 +395,8 @@ function WatchedMovieList({ watched }) {
   );
 }
 
-function WatchedMovie({ movie }) {
+function WatchedMovie({ movie })
+{
   return (
     <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
