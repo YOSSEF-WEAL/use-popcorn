@@ -157,6 +157,13 @@ body {
 .list-watched {
   height: calc(100% - 9rem);
 }
+.rearch-reslults {
+  text-align: center;
+  padding: 2.2rem 3.2rem 1.8rem 3.2rem;
+  border-radius: 0.9rem;
+  background-color: var(--color-background-100);
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
+}
 
 .listOfMovie {
   display: flex;
@@ -371,6 +378,9 @@ body {
 }
 
 @media (max-width: 1000px) {
+  body {
+    padding: 15px;
+  }
   .nav-bar {
     display: flex;
     flex-direction: column;
@@ -386,17 +396,18 @@ body {
     align-items: center;
   }
   .listOfMovie {
-    width: 45%;
+    width: 100%;
     .movieResultImg {
-      height: 185px;
+      height: 350px;
     }
   }
   .main {
     flex-direction: column-reverse;
+    height: fit-content;
   }
   .box {
     width: 100%;
-    min-height: 40vh !important;
+    height: fit-content;
   }
   .search {
     width: 95%;

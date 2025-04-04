@@ -234,11 +234,14 @@ function Box({ children })
 function MovieList({ movies, onSelectMovie })
 {
   return (
-    <ul className="list list-movies">
-      {movies?.map((movie) => (
-        <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
-      ))}
-    </ul>
+    <>
+      <h1 className="rearch-reslults">Search Reslults</h1>
+      <ul className="list list-movies">
+        {movies?.map((movie) => (
+          <Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
+        ))}
+      </ul>
+    </>
   );
 }
 
@@ -363,6 +366,8 @@ function MovieDetals({ selectedId, onCloseMovie, onAddWatched, watched })
               &larr;
             </button>
 
+
+
             {!poster ? (
               "🍿"
             ) : (
@@ -442,6 +447,7 @@ function WatchedMovieList({ watched, onDeletWatched })
 {
   return (
     <div className="mySaveMoive">
+
       <ul className="list">
         {watched.map((movie) => (
           <WatchedMovie movie={movie} key={movie.imdbID} onDeletWatched={onDeletWatched} />
