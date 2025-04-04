@@ -436,7 +436,6 @@ function WatchedMovieList({ watched, onDeletWatched })
 {
   return (
     <div className="mySaveMoive">
-      <h5>My Save Moives</h5>
       <ul className="list">
         {watched.map((movie) => (
           <WatchedMovie movie={movie} key={movie.imdbID} onDeletWatched={onDeletWatched} />
