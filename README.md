@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Movie Search and Watchlist App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Movie Search and Watchlist App! This is a simple web tool that lets you search for movies, check out their details, rate them, and keep track of the ones you’ve watched—all in one place.
 
-## Available Scripts
+# What You Can Do
 
-In the project directory, you can run:
+- Search for Movies: Type a movie name (like "Inception") and see a list of matching results.
+- View Details: Click on a movie to see its poster, story, actors, and more.
+- Rate Movies: Give movies a star rating (1 to 10) and save them to your list.
+- Track Your Watchlist: Keep a list of movies you’ve watched and remove them anytime.
+- Easy Navigation: Collapse or expand sections to keep things tidy.
 
-### `npm start`
+# How to Use It
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1- Start Searching:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Find the search bar at the top.
+- Type the name of a movie you’re curious about and hit Enter.
+- Wait a moment while the app finds movies for you.
 
-### `npm test`
+2- Explore Movies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- A list of movies will appear. Click any movie to see more about it.
+- You’ll see things like the release date, runtime, and a short summary.
 
-### `npm run build`
+3- Rate and Save:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Like a movie? Give it a star rating.
+- Click "Add to List" to save it to your watchlist.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4- Manage Your Watchlist:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Check out your saved movies in the watchlist section.
+- Want to remove one? Just click "Delete" next to it.
 
-### `npm run eject`
+5- Extra Tips:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Use the "–" or "+" buttons to hide or show parts of the screen.
+- Press the "Escape" key to close movie details quickly.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- You don’t need to install anything! Just open the app in your web browser (your friends who made this will give you the link).
+- Make sure you’re connected to the internet—it needs to fetch movie info online
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# What You’ll See
 
-## Learn More
+- Loading Message: If it says "Loading…", just wait a sec while the app grabs the info.
+- Error Message: If something goes wrong (like a movie not found), it’ll let you know with a little "⛔" sign.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Fun Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- The app remembers your watchlist even if you close it and come back later.
+- It shows cool stats about your watched movies, like average ratings and runtimes.
 
-### Code Splitting
+# Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- You need to type at least 3 letters in the search bar before it starts looking for movies.
+- If you don’t see a poster, you might get a popcorn emoji (🍿) instead!
 
-### Analyzing the Bundle Size
+# Feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Love it? Hate it? Let us know how we can make it better!
