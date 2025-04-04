@@ -16,10 +16,15 @@ export default function App()
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
 
+  // const [watched, setWatched] = useState(function ()
+  // {
+  //   const storedValue = localStorage.getItem('watched');
+  //   return JSON.parse(storedValue);
+  // });
   const [watched, setWatched] = useState(function ()
   {
     const storedValue = localStorage.getItem('watched');
-    return JSON.parse(storedValue);
+    return storedValue ? JSON.parse(storedValue) : [];
   });
 
   function handleSelectMovie(id)
@@ -47,6 +52,8 @@ export default function App()
   {
     localStorage.setItem('watched', JSON.stringify(watched));
   }, [watched]);
+
+
 
   useEffect(
     function ()
